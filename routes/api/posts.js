@@ -16,6 +16,8 @@ router.post(
     check('text', 'Text is required').not().isEmpty(),
     check('movie', 'Movie is required').not().isEmpty(),
     check('rating', 'Rating is required').not().isEmpty(),
+    check('genre', 'Genre is required').not().isEmpty(),
+    check('year', 'Year is required').not().isEmpty()
   ]],
   async (req, res) => {
     const errors = validationResult(req);
@@ -29,8 +31,10 @@ router.post(
       const newPost = new Post({
         text: req.body.text,
         name: user.name,
-        rating: user.rating,
-        movie: user.movie,
+        movie: req.body.movie,
+        genre: req.body.genre,
+        year: req.body.year,
+        rating: req.body.rating,
         avatar: user.avatar,
         user: req.user.id
       });
