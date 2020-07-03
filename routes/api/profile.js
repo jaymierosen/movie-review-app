@@ -5,6 +5,7 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 const User = require('../../models/User');
 const Profile = require('../../models/Profile');
+const Post = require('../../models/Post');
 // bring in normalize to give us a proper url, regardless of what user entered
 const normalize = require('normalize-url');
 const checkObjectId = require('../../middleware/checkObjectId.js');

@@ -74,7 +74,7 @@ router.post(
       jwt.sign(
         payload,
         config.get('jwtSecret'),
-        { expiresIn: '360000' },
+        { expiresIn: '5 days' },
         (err, token) => {
           if (err) throw err;
           // return jsonwebtoken because in frontend when user registers, they can be logged in right away
