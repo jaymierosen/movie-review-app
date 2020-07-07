@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Landing = () => {
   return (
@@ -8,10 +9,14 @@ export const Landing = () => {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col">
-            <button className="btn btn-primary btn-block">Sign Up</button>
+            <Link className="nav-link" to="/register">
+              <button className="btn btn-primary btn-block">Sign Up</button>
+            </Link>
           </div>
           <div className="col">
-            <button className="btn btn-primary btn-block">Login</button>
+            <Link className="nav-link" to="/login">
+              <button className="btn btn-primary btn-block">Login</button>
+            </Link>
           </div>
         </div>
       </div>
