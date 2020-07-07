@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
+import Navbar from './components/layout/Navbar';
+import Landing from './components/layout/Landing';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-class App extends Component {
-  render() {
+const App = () => {
     return (
-      <div className="App">
-          <h2>Welcome to React</h2>
-      </div>
+      <Fragment>
+        <Navbar />
+        <Landing />
+      </Fragment>
     );
-  }
 }
 
 export default App;
