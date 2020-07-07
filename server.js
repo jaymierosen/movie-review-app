@@ -1,12 +1,14 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const { connect } = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
 // Connect to DB
 connectDB();
 
+app.use(cors());
 app.get('/', (req, res) => res.send('API running'));
 
 // Init middleware

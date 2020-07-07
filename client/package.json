@@ -8,6 +8,8 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
+    "cors": "^2.8.5",
+    "http-proxy-middleware": "^1.0.4",
     "react": "^16.13.1",
     "react-bootstrap": "^1.1.0",
     "react-dom": "^16.13.1",
@@ -21,5 +23,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://127.0.0.1:8000/",
+  "secure": false
 }
