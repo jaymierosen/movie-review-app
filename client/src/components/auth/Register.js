@@ -44,12 +44,12 @@ const Register = () => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Sign Up</h1>
+      <h2 className='large text-primary'>Sign Up</h2>
       <p className='lead'>
         <i className='fas fa-user'></i> Create Your Account
       </p>
-      <form className='form' onSubmit={(e) => onSubmit(e)}>
-        <div className='form-group'>
+      <form className='form-row' onSubmit={(e) => onSubmit(e)}>
+        <div className='form-group col-md-6'>
           <input
             type='text'
             placeholder='Name'
