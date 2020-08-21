@@ -1,22 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-export const Landing = () => {
+const Landing = ({ isAuthenticated }) => {
+
+  // Check if the user is authenticated, then redirect
+  if(isAuthenticated){
+    return <Redirect to='/dashboard' />
+  }
   return (
-    <section className="container-fluid px-lg-5">
-      <h1 className="text-center">Movie App</h1>
-      <p className="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col">
-            <Link className="nav-link" to="/register">
-              <button className="btn btn-primary btn-block">Sign Up</button>
-            </Link>
-          </div>
-          <div className="col">
-            <Link className="nav-link" to="/login">
-              <button className="btn btn-primary btn-block">Login</button>
-            </Link>
+    <section className="landing">
+      <div className="dark-overlay">
+        <div className="landing-inner">
+          <h1 className="x-large">Developer Connector</h1>
+          <p className="lead">
+            Create a developer profile/portfolio, share posts and get help from
+            other developers
+          </p>
+          <div className="buttons">
+            <Link to="/register" className="btn btn-primary">Sign Up</Link>
+            <Link to="/login" className="btn btn-light">Login</Link>
           </div>
         </div>
       </div>
@@ -24,4 +28,12 @@ export const Landing = () => {
   )
 }
 
-export default Landing;
+Landing.propTypes = {
+  isAuthenticated: PropTypes.bool,
+}
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps)(Landing);
