@@ -4,9 +4,10 @@ import { setAlert } from './alert';
 import {
   GET_PROFILE,
   GET_PROFILES,
-  PROFILE_ERROR,
   CLEAR_PROFILE,
-  ACCOUNT_DELETED,
+  UPDATE_PROFILE,
+  PROFILE_ERROR,
+  ACCOUNT_DELETED
 } from './types';
 
 // Get current users profile
@@ -100,6 +101,43 @@ export const createProfile = (
     });
   }
 };
+
+// ADD LATEST MOVIES SEEN
+export const addLatestMovies = (formData, history) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    const res = await axios.put('/api/profile/latestMoviesSeen', formData, config);
+
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data
+    });
+
+    // Set Alert once profile is updated or created
+    dispatch(setAlert('Added!', 'success'));
+
+    // Redirect 
+    history.push('/dashboard');
+
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if(errors){
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+    
+  }
+}
 
 // Delete account & profile
 export const deleteAccount = () => async dispatch => {

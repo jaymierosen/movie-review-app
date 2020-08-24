@@ -1,8 +1,11 @@
-const mongoose = require('mongoose');
+"use strict";
 
-const ProfileSchema = new mongoose.Schema({
+var mongoose = require('mongoose');
+
+var ProfileSchema = new mongoose.Schema({
   user: {
-    type: mongoose.Schema.Types.ObjectId, // connecting to id in the user model (i.e. _id)
+    type: mongoose.Schema.Types.ObjectId,
+    // connecting to id in the user model (i.e. _id)
     ref: 'user'
   },
   favActress: {
@@ -25,24 +28,21 @@ const ProfileSchema = new mongoose.Schema({
   animes: {
     type: [String]
   },
-  latestMoviesSeen: [
-    {
-      title: {
-        type: String,
-        required: true,
-      },
-      director: {
-        type: String
-      },
-      plot: {
-        type: String
-      }
+  latestMoviesSeen: [{
+    title: {
+      type: String,
+      required: true
+    },
+    director: {
+      type: String
+    },
+    plot: {
+      type: String
     }
-  ],
+  }],
   date: {
     type: Date,
-    default: Date.now
+    "default": Date.now
   }
 });
-
 module.exports = mongoose.model('profile', ProfileSchema);

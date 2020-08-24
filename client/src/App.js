@@ -8,10 +8,12 @@ import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
 
 // Profiles
-// import CreateProfile from './components/profile_form/CreateProfile';
-// import EditProfile from './components/profile_form/EditProfile';
+import CreateProfile from './components/profile_form/CreateProfile';
+import EditProfile from './components/profile_form/EditProfile';
+import Profile from './components/profile/Profile';
+import Profiles from './components/profiles/Profiles';
 
-// import AddLatestMovies from './components/profile_form/AddLatestMovies';
+import AddLatestMovies from './components/profile_form/AddLatestMovies';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 
@@ -45,9 +47,13 @@ const App = () => {
             <Switch>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
+              <Route exact path='/profiles' component={Profiles} />
+              <Route exact path='/profile/:id' component={Profile} />
               {/* Force user to log in to see dashboard. Redirect to login if the user's not logged in */}
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
-              {/* <PrivateRoute exact path='/latestMoviesSeen' component={AddLatestMovies} /> */}
+              <PrivateRoute exact path='/create-profile' component={CreateProfile} />
+              <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+              <PrivateRoute exact path='/latestMoviesSeen' component={AddLatestMovies} />
             </Switch>
           </section>
         </Fragment>
